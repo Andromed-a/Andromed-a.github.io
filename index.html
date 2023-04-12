@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Tropicool Metaverse</title>
+    <meta name="description" content="Enter the Tropicool island in the metaverse.">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+  </head>
+  <body style="text-align: center">
+    <canvas id="unity-canvas" width="960px" height="960px" style="width: 98vw; height: 98vh; background: url('Build/WebGL.jpg') center / cover"></canvas>
+    <script src="Build/WebGL.loader.js"></script>
+    <script>
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+      }
+
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/WebGL.data",
+        frameworkUrl: "Build/WebGL.framework.js",
+        codeUrl: "Build/WebGL.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Tropicool Metaverse",
+        productName: "Tropicool Demo",
+        productVersion: "0.1",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      });
+    </script>
+    <style type="text/css">
+      body{
+        background: linear-gradient(180deg, rgba(255,98,0,1) 15%, rgba(0,159,255,1) 85%);
+        background-attachment: fixed;
+      }
+    </style>
+  </body>
+</html>
